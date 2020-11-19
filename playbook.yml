@@ -1,16 +1,16 @@
 ---
 
-- hosts: all 
+- hosts: all
   become: true
   tasks:
     - copy:
-        content: "hello world"
+        content: "Gangu"
         dest: /tmp/abc.txt
-      notify: restart_apache
+        notify: restart_apache
 
   handlers:
-    - name: restart_apache
-      service:
-        name: httpd
-        state: restart
-        enabled: yes
+          - name: restart_apache
+            service:
+                    name: httpd
+                    state: restarted
+                    enabled: yes
