@@ -1,16 +1,16 @@
 ---
-
-- hosts: all
+- name: creating playbook for handlers
+  hosts: all
   become: true
   tasks:
-    - copy:
-        content: "Gangu"
-        dest: /tmp/abc.txt
+    - name: copy content
+      copy:
+        content: "Hello world"
+        dest: /tmp/pankaj.txt
         notify: restart_apache
-
   handlers:
-          - name: restart_apache
-            service:
-                    name: httpd
-                    state: restarted
-                    enabled: yes
+    - name: restart_apache
+      service:
+        name: httpd
+        state: restarted
+        enabeled: yes
