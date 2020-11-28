@@ -1,18 +1,17 @@
 ---
-- name: creating playbook for handler
+
+- name: creating playbook for handlers
   hosts: all
-  become : true
+  become: true
   tasks:
-    - name: notify
+    - name: creating handler and notify
       copy:
-        content: "hello Pankaj"
+        content: 'Hello Moto'
         dest: /tmp/abc.txt
       notify: apache_restart
-
   handlers:
     - name: apache_restart
-      service: 
+      service:
         name: httpd
         state: restarted
-        enabled: yes
-
+        enabled: yes   
